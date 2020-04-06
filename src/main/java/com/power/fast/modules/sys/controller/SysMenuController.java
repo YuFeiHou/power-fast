@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  * 菜单管理(SysMenu)表控制层
@@ -23,7 +22,7 @@ public class SysMenuController {
     @Autowired
     private SysMenuService sysMenuService;
 
-    /**0
+    /**
      * 菜单列表(测swagger)
      */
     @GetMapping("/list")
