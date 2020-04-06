@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * @author fei
  * @title: DruidConfig
- * @projectName staff
+ * @projectName power-fast
  * @description: 阿里巴巴数据源
  * @date 2020/2/20 18:05
  */
