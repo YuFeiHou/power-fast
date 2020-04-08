@@ -1,5 +1,7 @@
 package com.power.fast.modules.sys.redis;
 
+import com.power.fast.modules.sys.entity.SysMenu;
+import com.power.fast.modules.sys.service.SysMenuService;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
+
+import java.util.List;
 
 /**
  * @author fei
@@ -21,6 +25,8 @@ public class RedisTests {
     Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
+    private SysMenuService sysMenuService;
+    @Autowired
     private RedisTemplate redisTemplate;//key - value 都是对象
     @Autowired
     private StringRedisTemplate stringRedisTemplate;//key - value 都是字符串
@@ -32,4 +38,11 @@ public class RedisTests {
         logger.info("redis存储的数据为："+stringRedisTemplate.opsForValue().get("hello"));
         //stringRedisTemplate.opsForList().leftPush("List","1");
     }
+
+    @Test
+    public void redisTemplateTests() {
+        List<SysMenu> sysMenus = sysMenuService.list();
+        redisTemplate.opsForList().leftPush("sysMenus",sysMenus);
+    }
+
 }
