@@ -11,4 +11,8 @@ import com.power.fast.modules.sys.entity.SysUser;
  */
 public interface SysUserService extends IService<SysUser> {
 
+    /**
+     * 根据用户名，查询系统用户信息
+     */
+    SysUser queryByUserName(String username);
 }

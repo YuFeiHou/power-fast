@@ -1,11 +1,3 @@
-/**
- * Copyright (c) 2016-2019 人人开源 All rights reserved.
- * <p>
- * https://www.renren.io
- * <p>
- * 版权所有，侵权必究！
- */
-
 package com.power.fast.modules.sys.service.impl;
 
 import com.google.code.kaptcha.Producer;
@@ -55,8 +47,9 @@ public class SysCaptchaServiceImpl implements SysCaptchaService {
      */
     @Override
     public boolean validate(String code, String uuid) {
-        String captchaCode = redisCache.getCacheObject(code);
-        if (captchaCode == null) {
+        //从缓冲中获取code码
+        String captchaCode = redisCache.getCacheObject(uuid);
+        if (StringUtils.isBlank(captchaCode)) {
             return false;
         }
 
