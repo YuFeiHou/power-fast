@@ -1,9 +1,9 @@
 package com.power.fast.modules.sys.controller;
-
 import com.power.fast.constant.HttpStatus;
 import com.power.fast.modules.sys.from.SysLoginForm;
 import com.power.fast.modules.sys.service.LoginService;
 import com.power.fast.modules.sys.service.SysCaptchaService;
+import com.power.fast.modules.sys.service.SysUserTokenService;
 import com.power.fast.util.AjaxResult;
 import com.power.fast.util.StringUtils;
 import io.swagger.annotations.Api;
@@ -29,12 +29,14 @@ import java.io.IOException;
 @Api(description = "用户登录")
 @RestController
 @RequestMapping("/sys")
-public class SysLoginController {
+public class SysLoginController extends BaseController {
 
     @Autowired
     private SysCaptchaService sysCaptchaService;
     @Autowired
     private LoginService loginService;
+    @Autowired
+    private SysUserTokenService sysUserTokenService;
 
 
     /**
@@ -61,6 +63,16 @@ public class SysLoginController {
         checkLoginForm(form);
         //登录验证
         return loginService.login(form);
+    }
+
+    /**
+     * 退出
+     */
+    @PostMapping("/logout")
+    @ApiOperation("退出登录")
+    public AjaxResult logout() {
+        sysUserTokenService.logout(getUserId());
+        return AjaxResult.success();
     }
 
     /**
