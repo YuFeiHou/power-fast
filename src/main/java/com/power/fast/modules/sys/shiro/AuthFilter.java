@@ -1,4 +1,5 @@
 package com.power.fast.modules.sys.shiro;
+import com.alibaba.fastjson.JSON;
 import com.power.fast.constant.HttpStatus;
 import com.power.fast.util.AjaxResult;
 import org.apache.commons.lang3.StringUtils;
@@ -73,7 +74,8 @@ public class AuthFilter extends AuthenticatingFilter {
             HttpServletResponse httpResponse = (HttpServletResponse) response;
             httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
             //将token错误信息返回
-            httpResponse.getWriter().print(AjaxResult.error(HttpStatus.UNAUTHORIZED, "token信息不存在！"));
+            String msg = JSON.toJSONString(AjaxResult.error(HttpStatus.UNAUTHORIZED, "token msg error！"));
+            httpResponse.getWriter().print(msg);
             return false;
         }
         //调用父类中executeLogin方法 --> 这个中有subject.login(token)
@@ -97,7 +99,8 @@ public class AuthFilter extends AuthenticatingFilter {
         try {
             //处理登录失败的异常
             Throwable throwable = e.getCause() == null ? e : e.getCause();
-            httpResponse.getWriter().print(AjaxResult.error(HttpStatus.UNAUTHORIZED, throwable.getMessage()));
+            String msg = JSON.toJSONString(AjaxResult.error(HttpStatus.UNAUTHORIZED, throwable.getMessage()));
+            httpResponse.getWriter().print(msg);
         } catch (IOException e1) {
 
         }
