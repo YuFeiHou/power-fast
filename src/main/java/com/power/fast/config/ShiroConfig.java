@@ -60,14 +60,13 @@ public class ShiroConfig {
         //设置过滤器集合（有顺序的）
         Map<String, String> filterMap = new LinkedHashMap<>();
         filterMap.put("/webjars/**", "anon");
-        filterMap.put("/sys/**", "anon");
         filterMap.put("/druid/**", "anon");
         filterMap.put("/sys/login", "anon");
+        filterMap.put("/sys/captcha.jpg", "anon");
         filterMap.put("/swagger/**", "anon");
         filterMap.put("/v2/api-docs", "anon");
         filterMap.put("/swagger-ui.html", "anon");
         filterMap.put("/swagger-resources/**", "anon");
-        filterMap.put("/captcha.jpg", "anon");
         filterMap.put("/**", "authFilter");
         shiroFilter.setFilterChainDefinitionMap(filterMap);
 

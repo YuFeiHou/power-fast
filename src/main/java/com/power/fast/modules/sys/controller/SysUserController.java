@@ -1,13 +1,10 @@
 package com.power.fast.modules.sys.controller;
-
-import com.power.fast.modules.sys.entity.SysUser;
-import com.power.fast.modules.sys.service.SysUserService;
+import com.power.fast.util.AjaxResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import java.util.Collection;
-
 /**
  * 系统用户(SysUser)表控制层
  *
@@ -16,19 +13,17 @@ import java.util.Collection;
  */
 @Api(description = "用户管理")
 @RestController
-@RequestMapping("/sysUser")
-public class SysUserController {
-
-    @Autowired
-    private SysUserService sysUserService;
-
+@RequestMapping("/sys/user")
+public class SysUserController extends BaseController {
+    Logger logger = LoggerFactory.getLogger(getClass());
     /**
      * 获取用户列表
      */
-    @GetMapping("/list")
-    @ApiOperation("获取用户列表")
-    public Collection<SysUser> list(){
-        return sysUserService.list();
+    @GetMapping("/info")
+    @ApiOperation("当前管理员信息")
+    public AjaxResult info() {
+        logger.info("【当前管理员信息为：{}】",getUser());
+        return AjaxResult.success(getUser());
     }
 
 }

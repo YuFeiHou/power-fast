@@ -43,7 +43,7 @@ public class AuthRealm extends AuthorizingRealm {
     }
 
     /**
-     * 认证 -- 登录时调用
+     * 认证 -- 完成之后调用
      *
      * @param authenticationToken
      * @return

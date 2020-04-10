@@ -35,7 +35,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
         List<Parameter> pars = new ArrayList<Parameter>();
         ticketPar.name("token").description("AccessToken令牌")
                 .modelRef(new ModelRef("string")).parameterType("header")
-                .required(false).defaultValue("Bearer ").build();
+                .required(false).defaultValue("").build();
         pars.add(ticketPar.build());
 
         return new Docket(DocumentationType.SWAGGER_2)
