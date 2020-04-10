@@ -1,4 +1,4 @@
-package com.power.fast.modules.sys.entity;
+package com.power.fast.modules.sys.dto;
 
 import lombok.Data;
 
@@ -12,7 +12,7 @@ import java.util.Date;
  * @author fei
  */
 @Data
-public class UserToken implements Serializable {
+public class UserTokenDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     /**
      * 用户ID

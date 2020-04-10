@@ -1,6 +1,6 @@
 package com.power.fast.modules.sys.service.impl;
 
-import com.power.fast.modules.sys.entity.UserToken;
+import com.power.fast.modules.sys.dto.UserTokenDTO;
 import com.power.fast.modules.sys.jwt.TokenGenerator;
 import com.power.fast.modules.sys.service.SysUserTokenService;
 import com.power.fast.util.RedisCache;
@@ -34,12 +34,12 @@ public class SysUserTokenServiceImpl implements SysUserTokenService {
         //过期时间
         Date expireTime = new Date(now.getTime() + EXPIRE * 1000);
 
-        UserToken userToken = new UserToken();
+        UserTokenDTO userToken = new UserTokenDTO();
         userToken.setUserId(userId);
         userToken.setToken(token);
         userToken.setExpireTime(expireTime);
         userToken.setUpdateTime(now);
-        redisCache.setCacheObject(userId, userToken);
+        redisCache.setCacheObject(token, userToken);
         return token;
     }
 
@@ -53,7 +53,7 @@ public class SysUserTokenServiceImpl implements SysUserTokenService {
         //生成一个token
         String token = TokenGenerator.generateValue();
         //修改token
-        UserToken userToken = new UserToken();
+        UserTokenDTO userToken = new UserTokenDTO();
         userToken.setToken(token);
         userToken.setUserId(userId);
         redisCache.setCacheObject(userId, userToken);
