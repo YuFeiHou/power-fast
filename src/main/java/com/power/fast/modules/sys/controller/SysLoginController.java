@@ -58,6 +58,8 @@ public class SysLoginController extends BaseController {
 
     @PostMapping("/login")
     @ApiOperation("用户登录")
+    @ResponseBody
+    @CrossOrigin
     public AjaxResult login(@RequestBody SysLoginForm form) throws IOException {
         //校验表单数据
         checkLoginForm(form);
