@@ -1,5 +1,6 @@
 package com.power.fast.modules.sys.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -27,6 +28,11 @@ public class SysMenu implements Serializable {
      * 菜单名称
      */
     private String name;
+    /**
+     * 父菜单名称
+     */
+    @TableField(exist=false)
+    private String parentName;
     /**
      * 菜单URL
      */

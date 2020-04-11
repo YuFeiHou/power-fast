@@ -6,10 +6,13 @@ import com.power.fast.modules.sys.service.SysUserService;
 import com.power.fast.util.RedisCache;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Set;
 
 /**
  * @author fei
@@ -37,9 +40,19 @@ public class AuthRealm extends AuthorizingRealm {
         return token instanceof AuthToken;
     }
 
+    /**
+     * 授权(验证权限时调用,与权限注解一一对应)
+     *
+     */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        return null;
+        SysUser user = (SysUser) principalCollection.getPrimaryPrincipal();
+        //用户权限列表
+        Set<String> permsSet = sysUserService.getUserPermissions(user.getUserId());
+
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+        info.setStringPermissions(permsSet);
+        return info;
     }
 
     /**
@@ -64,7 +77,7 @@ public class AuthRealm extends AuthorizingRealm {
         //查询用户信息
         SysUser user = sysUserService.getById(userTokenDTO.getUserId());
         //账号锁定
-        if(user.getStatus() == 0){
+        if (user.getStatus() == 0) {
             throw new LockedAccountException("账号已被锁定,请联系管理员");
         }
 

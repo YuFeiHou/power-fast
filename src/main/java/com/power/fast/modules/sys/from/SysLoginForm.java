@@ -12,12 +12,12 @@ import lombok.Data;
 @Data
 @ApiModel(value="登录表单",description="登录表单SysLoginForm")
 public class SysLoginForm {
-    @ApiModelProperty(value="用户名",dataType="String",example="用户名")
+    @ApiModelProperty(value="用户名",dataType="String",example="admin")
     private String username;
-    @ApiModelProperty(value="密码",dataType="String",example="密码")
+    @ApiModelProperty(value="密码",dataType="String",example="admin")
     private String password;
     @ApiModelProperty(value="验证码",dataType="String",example="验证码")
     private String captcha;
-    @ApiModelProperty(value="uuid",dataType="String",example="36位UUID")
+    @ApiModelProperty(value="uuid",dataType="String",example="验证码id")
     private String uuid;
 }
