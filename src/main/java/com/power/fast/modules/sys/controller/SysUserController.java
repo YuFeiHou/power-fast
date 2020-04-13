@@ -21,6 +21,7 @@ public class SysUserController extends BaseController {
      */
     @GetMapping("/info")
     @ApiOperation("当前管理员信息")
+    @ResponseBody
     public AjaxResult info() {
         logger.info("【当前管理员信息为：{}】",getUser());
         return AjaxResult.success(getUser());

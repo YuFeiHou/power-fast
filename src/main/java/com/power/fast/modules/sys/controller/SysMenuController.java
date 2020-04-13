@@ -29,6 +29,7 @@ public class SysMenuController {
     @GetMapping("/list")
     @ApiOperation("获取菜单列表")
     @RequiresPermissions("sys:menu:list")
+    @ResponseBody
     public AjaxResult list(){
         List<SysMenu> menuList = sysMenuService.list();
         for(SysMenu sysMenuEntity : menuList){
