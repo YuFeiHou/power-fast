@@ -10,5 +10,5 @@ package com.power.fast.constant;
 public class UserConstant {
 
     /** 超级管理员ID */
-    public static final int SUPER_ADMIN = 1;
+    public static final String SUPER_ADMIN = "1";
 }

@@ -44,12 +44,12 @@ public class HttpStatus {
     /**
      * 参数列表错误
      */
-    public static final int BAD_REQUEST = 400;
+    public static final String BAD_REQUEST = "400";
 
     /**
      * 未授权
      */
-    public static final int UNAUTHORIZED = 401;
+    public static final String UNAUTHORIZED = "401";
 
     /**
      * 访问受限，授权过期

@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.power.fast.modules.sys.entity.SysMenu;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * 菜单管理(SysMenu)
  *
@@ -12,4 +14,9 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface SysMenuDao extends BaseMapper<SysMenu> {
+
+    /**
+     * 查询用户的所有菜单ID
+     */
+    List<String> queryAllMenuId(String userId);
 }

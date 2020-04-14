@@ -11,7 +11,7 @@ public interface HttpStatus {
     /**
      * 操作成功
      */
-    public static final int SUCCESS = 200;
+    public static final String SUCCESS = "200";
 
     /**
      * 对象创建成功
@@ -74,17 +74,17 @@ public interface HttpStatus {
     public static final int CONFLICT = 409;
 
     /**
-     * 不支持的数据，媒体类型
-     */
-    public static final int UNSUPPORTED_TYPE = 415;
-
-    /**
      * 系统内部错误
      */
-    public static final int ERROR = 500;
+    public static final String ERROR = "500";
 
     /**
      * 接口未实现
      */
     public static final int NOT_IMPLEMENTED = 501;
+
+    /**
+     * token失效
+     */
+    public static final String token_ = "502";
 }

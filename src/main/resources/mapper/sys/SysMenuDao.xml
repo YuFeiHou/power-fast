@@ -2,4 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.power.fast.modules.sys.dao.SysMenuDao">
 
+    <!-- 查询用户的所有菜单ID -->
+    <select id="queryAllMenuId" resultType="string">
+		SELECT DISTINCT
+	      rm.menu_id
+        FROM
+	      sys_user_role ur
+        LEFT JOIN sys_role_menu rm ON ur.role_id = rm.role_id
+        WHERE
+	      ur.user_id = #{userId}
+	</select>
+
 </mapper>

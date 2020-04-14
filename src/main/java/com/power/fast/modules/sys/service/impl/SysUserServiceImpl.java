@@ -69,4 +69,14 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUser> impleme
     public SysUser queryByUserName(String username) {
         return sysUserDao.selectOne(new QueryWrapper<SysUser>().eq("user_name", username));
     }
+
+    /**
+     * 查询用户的所有菜单ID
+     *
+     * @param userId
+     */
+    @Override
+    public List<String> queryAllMenuId(String userId) {
+        return sysMenuDao.queryAllMenuId(userId);
+    }
 }

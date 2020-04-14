@@ -3,6 +3,7 @@ package com.power.fast.modules.sys.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.power.fast.modules.sys.entity.SysUser;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -26,4 +27,9 @@ public interface SysUserService extends IService<SysUser> {
      * @return
      */
     SysUser queryByUserName(String username);
+
+    /**
+     * 查询用户的所有菜单ID
+     */
+    List<String> queryAllMenuId(String userId);
 }

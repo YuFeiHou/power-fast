@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Api(description = "用户管理")
 @RestController
-@RequestMapping("/sys/user")
+@RequestMapping("/user")
 public class SysUserController extends BaseController {
     Logger logger = LoggerFactory.getLogger(getClass());
     /**
