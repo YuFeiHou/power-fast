@@ -1,5 +1,8 @@
 package com.power.fast.exception;
+
+import com.power.fast.constant.HttpStatus;
 import com.power.fast.util.AjaxResult;
+import org.apache.shiro.authz.AuthorizationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -20,7 +23,25 @@ public class RRExceptionHandler {
      * 处理自定义异常
      */
     @ExceptionHandler(RRException.class)
-    public AjaxResult handleRRException(RRException e){
-        return AjaxResult.error();
+    public AjaxResult handleRRException(RRException e) {
+        logger.error("【系统异常错误! code={} ,错误信息为：{}】", e.getCode(), e.getMsg());
+
+        AjaxResult ajaxResult = new AjaxResult();
+        ajaxResult.put("code", e.getCode());
+        ajaxResult.put("msg", e.getMsg());
+
+        return ajaxResult;
+    }
+
+    /**
+     * 同意捕获并处理授权信息
+     *
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(AuthorizationException.class)
+    public AjaxResult handleAuthorizationException(AuthorizationException e) {
+        logger.error("【系统异常错误! 错误信息为：{}】", e.getMessage());
+        return AjaxResult.error("没有权限，请联系管理员授权", HttpStatus.UNAUTHORIZED);
     }
 }

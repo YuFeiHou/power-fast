@@ -38,7 +38,7 @@ public class TokenGenerator {
             byte[] messageDigest = algorithm.digest();
             return toHexString(messageDigest);
         } catch (Exception e) {
-            throw new RRException(" 不能", e);
+            throw new RRException("token生成异常！", e);
         }
     }
 }

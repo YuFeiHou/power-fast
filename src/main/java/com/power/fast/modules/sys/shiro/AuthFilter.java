@@ -74,7 +74,7 @@ public class AuthFilter extends AuthenticatingFilter {
             HttpServletResponse httpResponse = (HttpServletResponse) response;
             httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
             //将token错误信息返回
-            String msg = JSON.toJSONString(AjaxResult.error(HttpStatus.UNAUTHORIZED, "token msg error！"));
+            String msg = JSON.toJSONString(AjaxResult.error(HttpStatus.UNAUTHORIZED, "token msg error"));
             httpResponse.getWriter().print(msg);
             return false;
         }

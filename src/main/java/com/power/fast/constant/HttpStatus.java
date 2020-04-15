@@ -82,7 +82,12 @@ public class HttpStatus {
     public static final int ERROR = 500;
 
     /**
-     * 接口未实现
+     * 账号已被锁定
      */
-    public static final int NOT_IMPLEMENTED = 501;
+    public static final String USERNAME_LOCK = "501";
+
+    /**
+     * 用户名或密码错误
+     */
+    public static final String USER_PASSWORD_ERROR = "502";
 }

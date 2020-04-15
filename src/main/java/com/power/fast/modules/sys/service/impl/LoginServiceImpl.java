@@ -47,12 +47,12 @@ public class LoginServiceImpl implements LoginService {
 
         //账号不存在、密码错误
         if (!user.getPassword().equals(new Sha256Hash(sysLoginForm.getPassword(), user.getSalt()).toHex())) {
-            return AjaxResult.error("账号或密码不正确");
+            return AjaxResult.error(HttpStatus.USER_PASSWORD_ERROR,"账号或密码不正确");
         }
 
         //账号锁定
         if (user.getStatus() == 0) {
-            return AjaxResult.error("账号已被锁定,请联系管理员！");
+            return AjaxResult.error(HttpStatus.USERNAME_LOCK,"账号已被锁定,请联系管理员！");
         }
 
         //生成token并且存入redis中;
