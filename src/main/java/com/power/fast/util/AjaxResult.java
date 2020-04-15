@@ -1,5 +1,7 @@
 package com.power.fast.util;
 
+import com.power.fast.constant.HttpStatus;
+
 import java.util.HashMap;
 
 /**
@@ -51,7 +53,7 @@ public class AjaxResult extends HashMap<String, Object> {
      * @param msg  返回内容
      * @param data 数据对象
      */
-    public AjaxResult(String code, String msg, Object data) {
+    public AjaxResult(int code, String msg, Object data) {
         super.put(CODE_TAG, code);
         super.put(MSG_TAG, msg);
         if (StringUtils.isNotNull(data)) {
@@ -106,7 +108,7 @@ public class AjaxResult extends HashMap<String, Object> {
      * @return 成功消息
      */
     public static AjaxResult success(String msg, Object data) {
-        return new AjaxResult(com.power.fast.util.HttpStatus.SUCCESS, msg, data);
+        return new AjaxResult(HttpStatus.SUCCESS, msg, data);
     }
 
     /**
@@ -146,7 +148,7 @@ public class AjaxResult extends HashMap<String, Object> {
      * @param msg  返回内容
      * @return 警告消息
      */
-    public static AjaxResult error(String code, String msg) {
+    public static AjaxResult error(int code, String msg) {
         return new AjaxResult(code, msg, null);
     }
 }

@@ -44,12 +44,12 @@ public class HttpStatus {
     /**
      * 参数列表错误
      */
-    public static final String BAD_REQUEST = "400";
+    public static final int BAD_REQUEST = 400;
 
     /**
      * 未授权
      */
-    public static final String UNAUTHORIZED = "401";
+    public static final int UNAUTHORIZED = 401;
 
     /**
      * 访问受限，授权过期
@@ -84,10 +84,10 @@ public class HttpStatus {
     /**
      * 账号已被锁定
      */
-    public static final String USERNAME_LOCK = "501";
+    public static final int USERNAME_LOCK = 501;
 
     /**
      * 用户名或密码错误
      */
-    public static final String USER_PASSWORD_ERROR = "502";
+    public static final int USER_PASSWORD_ERROR = 502;
 }
