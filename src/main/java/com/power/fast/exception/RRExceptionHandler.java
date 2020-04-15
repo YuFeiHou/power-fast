@@ -2,6 +2,8 @@ package com.power.fast.exception;
 
 import com.power.fast.constant.HttpStatus;
 import com.power.fast.util.AjaxResult;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authz.AuthorizationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,6 +33,30 @@ public class RRExceptionHandler {
         ajaxResult.put("msg", e.getMsg());
 
         return ajaxResult;
+    }
+
+    /**
+     * 捕获并处理 账号锁定
+     *
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(LockedAccountException.class)
+    public AjaxResult lockedAccountException(LockedAccountException e) {
+        logger.error("【系统异常错误! 错误信息为：{}】", e.getMessage());
+        return AjaxResult.error(e.getMessage(), HttpStatus.USERNAME_LOCK);
+    }
+
+    /**
+     * 捕获并处理 token失效
+     *
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(IncorrectCredentialsException.class)
+    public AjaxResult incorrectCredentialsException(IncorrectCredentialsException e) {
+        logger.error("【系统异常错误! 错误信息为：{}】", e.getMessage());
+        return AjaxResult.error(e.getMessage(), HttpStatus.FORBIDDEN);
     }
 
     /**
