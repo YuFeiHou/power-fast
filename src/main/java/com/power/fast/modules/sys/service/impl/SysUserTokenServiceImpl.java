@@ -46,16 +46,10 @@ public class SysUserTokenServiceImpl implements SysUserTokenService {
     /**
      * 退出，修改token值
      *
-     * @param userId 用户ID
+     * @param token token
      */
     @Override
-    public void logout(String userId) {
-        //生成一个token
-        String token = TokenGenerator.generateValue();
-        //修改token
-        UserTokenDTO userToken = new UserTokenDTO();
-        userToken.setToken(token);
-        userToken.setUserId(userId);
-        redisCache.setCacheObject(userId, userToken);
+    public void logout(String token) {
+        redisCache.deleteObject(token);
     }
 }

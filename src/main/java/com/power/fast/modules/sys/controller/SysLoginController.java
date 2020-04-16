@@ -4,6 +4,7 @@ import com.power.fast.modules.sys.from.SysLoginForm;
 import com.power.fast.modules.sys.service.LoginService;
 import com.power.fast.modules.sys.service.SysCaptchaService;
 import com.power.fast.modules.sys.service.SysUserTokenService;
+import com.power.fast.modules.sys.shiro.AuthFilter;
 import com.power.fast.util.AjaxResult;
 import com.power.fast.util.StringUtils;
 import io.swagger.annotations.Api;
@@ -15,6 +16,7 @@ import org.apache.commons.io.IOUtils;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -72,8 +74,10 @@ public class SysLoginController extends BaseController {
      */
     @PostMapping("/logout")
     @ApiOperation("退出登录")
-    public AjaxResult logout() {
-        sysUserTokenService.logout(getUserId());
+    public AjaxResult logout(HttpServletRequest httpRequest) {
+        //从header中获取token
+        String token = httpRequest.getHeader("token");
+        sysUserTokenService.logout(token);
         return AjaxResult.success();
     }
 

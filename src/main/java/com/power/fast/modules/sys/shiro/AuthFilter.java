@@ -111,7 +111,7 @@ public class AuthFilter extends AuthenticatingFilter {
     /**
      * 获取请求的token
      */
-    private String getRequestToken(HttpServletRequest httpRequest) {
+    public String getRequestToken(HttpServletRequest httpRequest) {
         //从header中获取token
         String token = httpRequest.getHeader("token");
 

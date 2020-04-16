@@ -15,8 +15,8 @@ public interface SysUserTokenService{
 
 	/**
 	 * 退出，修改token值
-	 * @param userId  用户ID
+	 * @param token  用户ID
 	 */
-	void logout(String userId);
+	void logout(String token);
 
 }
