@@ -24,7 +24,7 @@ public class SysUserController extends BaseController {
     @ResponseBody
     public AjaxResult info() {
         logger.info("【当前管理员信息为：{}】",getUser());
-        return AjaxResult.success(getUser());
+        return AjaxResult.success("userInfo",getUser());
     }
 
 }

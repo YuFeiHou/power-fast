@@ -1,5 +1,9 @@
 package com.power.fast.modules.sys.service;
 
+import com.power.fast.util.AjaxResult;
+
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * 用户Token
  *
@@ -14,9 +18,15 @@ public interface SysUserTokenService{
 	String createToken(String userId);
 
 	/**
-	 * 退出，修改token值
+	 * 退出，删除token值
 	 * @param token  用户ID
 	 */
 	void logout(String token);
 
+    /**
+     * 根据请求头获取token
+     * @param httpRequest
+     * @return
+     */
+    String getRequestToken(HttpServletRequest httpRequest);
 }

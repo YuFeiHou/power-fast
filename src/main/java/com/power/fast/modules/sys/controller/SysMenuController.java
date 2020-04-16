@@ -33,9 +33,8 @@ public class SysMenuController extends BaseController {
     @GetMapping("/nav")
     @ResponseBody
     public AjaxResult nav() {
-        AjaxResult ajaxResult = new AjaxResult();
         List<SysMenu> menuList = sysMenuService.getUserMenuList(getUserId());
-        return ajaxResult.put("menuList",menuList);
+        return AjaxResult.success("menuList",menuList);
     }
 
     /**

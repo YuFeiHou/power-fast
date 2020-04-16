@@ -58,6 +58,6 @@ public class LoginServiceImpl implements LoginService {
         //生成token并且存入redis中;
         String token = sysUserTokenService.createToken(user.getUserId());
 
-        return AjaxResult.success("登录成功！",token);
+        return AjaxResult.success("token",token);
     }
 }

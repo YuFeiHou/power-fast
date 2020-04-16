@@ -1,4 +1,5 @@
 package com.power.fast.modules.sys.controller;
+
 import com.power.fast.constant.HttpStatus;
 import com.power.fast.modules.sys.from.SysLoginForm;
 import com.power.fast.modules.sys.service.LoginService;
@@ -75,9 +76,11 @@ public class SysLoginController extends BaseController {
     @PostMapping("/logout")
     @ApiOperation("退出登录")
     public AjaxResult logout(HttpServletRequest httpRequest) {
-        //从header中获取token
-        String token = httpRequest.getHeader("token");
+        //获取token
+        String token = sysUserTokenService.getRequestToken(httpRequest);
+        //提出登录
         sysUserTokenService.logout(token);
+
         return AjaxResult.success();
     }
 
