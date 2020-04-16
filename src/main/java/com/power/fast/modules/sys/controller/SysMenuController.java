@@ -52,6 +52,6 @@ public class SysMenuController extends BaseController {
                 sysMenuEntity.setParentName(parentMenuEntity.getName());
             }
         }
-        return AjaxResult.success(menuList);
+        return AjaxResult.success("allMenuList",menuList);
     }
 }

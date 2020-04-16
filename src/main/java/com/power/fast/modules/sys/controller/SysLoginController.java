@@ -81,7 +81,7 @@ public class SysLoginController extends BaseController {
         //提出登录
         sysUserTokenService.logout(token);
 
-        return AjaxResult.success();
+        return AjaxResult.success("退出登录成功！");
     }
 
     /**
