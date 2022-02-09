@@ -20,7 +20,7 @@
         <fastjson.version>1.2.47</fastjson.version>
         <lombok.version>1.18.4</lombok.version>
         <commons.io.version>2.5</commons.io.version>
-        <shiro.version>1.4.0</shiro.version>
+        <shiro.version>1.7.1</shiro.version>
         <mybatisplus.version>3.3.1</mybatisplus.version>
         <kaptcha.version>0.0.9</kaptcha.version>
         <swagger.version>2.7.0</swagger.version>
